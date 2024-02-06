@@ -1,5 +1,11 @@
+import logging
+
 import wx
+
 from pydub import AudioSegment
+
+logging.basicConfig(filename='app.log', level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+
 
 class converterApp(wx.Frame):
     def __init__(self, parent, title):
@@ -68,10 +74,13 @@ class converterApp(wx.Frame):
                 self.name_from_file.SetValue("")
                 self.fileName.SetFocus()
             except FileNotFoundError:
+                logging.exception("El archivo no fue encontrado")
                 wx.MessageBox("El archivo especificado no fue encontrado. Verifica la ruta y vuelve a intentarlo.", "Archivo no encontrado", wx.OK | wx.ICON_ERROR)
             except PermissionError:
+                logging.exception("no se tienen los permisos suficientes.")
                 wx.MessageBox("No se tienen los permisos necesarios para leer el archivo o escribir el archivo de salida. Verifica los permisos y vuelve a intentarlo.", "Error de permisos", wx.OK | wx.ICON_ERROR)
             except Exception as e:
+                logging.exception(f"Error desconocido durante la conversión: {str(e)}")
                 wx.MessageBox(f"Error durante la conversión: {str(e)}", "Error Desconocido", wx.OK | wx.ICON_ERROR)
         dialog.Destroy()
 
