@@ -47,15 +47,14 @@ class converterApp(wx.Frame):
             path = fileDialog.GetPath()
             self.fileName.SetValue(path)
             self.name_from_file.SetFocus()
-
     def audio_converter(self, event):
         source_path = self.fileName.GetValue().strip()
         output_path = self.name_from_file.GetValue().strip()
-
+    
         if not source_path or not output_path:
-            wx.MessageBox("llena correctamente todos los campos.", "Error", wx.OK | wx.ICON_ERROR)
+            wx.MessageBox("Llena correctamente todos los campos.", "Error", wx.OK | wx.ICON_ERROR)
             return
-
+    
         dialog = wx.SingleChoiceDialog(self, "Elige el formato a convertir:", "Selecciona formato", ["mp3", "wav", "m4a", "opus", "flac"])
         if dialog.ShowModal() == wx.ID_OK:
             selected_format = dialog.GetStringSelection()
@@ -68,8 +67,12 @@ class converterApp(wx.Frame):
                 self.fileName.SetValue("")
                 self.name_from_file.SetValue("")
                 self.fileName.SetFocus()
+            except FileNotFoundError:
+                wx.MessageBox("El archivo especificado no fue encontrado. Verifica la ruta y vuelve a intentarlo.", "Archivo no encontrado", wx.OK | wx.ICON_ERROR)
+            except PermissionError:
+                wx.MessageBox("No se tienen los permisos necesarios para leer el archivo o escribir el archivo de salida. Verifica los permisos y vuelve a intentarlo.", "Error de permisos", wx.OK | wx.ICON_ERROR)
             except Exception as e:
-                wx.MessageBox(f"Error durante la conversión: {e}", "Error", wx.OK | wx.ICON_ERROR)
+                wx.MessageBox(f"Error durante la conversión: {str(e)}", "Error Desconocido", wx.OK | wx.ICON_ERROR)
         dialog.Destroy()
 
     def exit_program(self, event):
