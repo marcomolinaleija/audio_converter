@@ -61,7 +61,7 @@ class converterApp(wx.Frame):
             wx.MessageBox("Llena correctamente todos los campos.", "Error", wx.OK | wx.ICON_ERROR)
             return
     
-        dialog = wx.SingleChoiceDialog(self, "Elige el formato a convertir:", "Selecciona formato", ["mp3", "wav", "m4a", "opus", "flac"])
+        dialog = wx.SingleChoiceDialog(self, "Elige el formato a convertir:", "Selecciona formato", ["mp3", "wav", "m4a", "opus", "flac", "ogg"])
         if dialog.ShowModal() == wx.ID_OK:
             selected_format = dialog.GetStringSelection()
             
