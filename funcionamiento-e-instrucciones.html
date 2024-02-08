@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>convertidor de audio, y add-to-path. uso y posible corrección de errores.</title>
+	</head>
+	<body>
+	<h1>¿Cómo funciona?</h1>
+	<p>Aunque es un programa relativamente sencillo, demás no está explicar su uso, sin dejar de lado algunos recursos necesarios para que funcione correctamente.</p>
+	<h2>Funciones:</h2>
+	<p>El programa actualmente cuenta con solo una función, la cual es convertir audios.</p>
+	<p>Los formatos soportados son los siguientes:</p>
+	<ol>
+	<li>Formato mp3.</li>
+	<li>Formato wav.</li>
+	<li>Formato flac.</li>
+	<li>Formato opus, útil para la nueva función que se añadirá al programa.</li>
+	<li>Formato Ogg, nadie usa eso pero igual lo pongo por variedad.</li>
+	</ol>
+	<p>El programa es sencillo, tanto que simplemente al abrir ya te deja en un campo de edición, para escribir o pegar la ruta a tu archivo.</p>
+	<p>Luego, si continúas tabulando, estará el botón para seleccionar archivos desde el explorador</p>
+	<p>Después, el siguiente campo será para introducir el nombre del archivo convertido</p>
+	<p>Los siguientes botones son para convertir audio, y para salir del programa</p>
+	<p>Al presionar el botón convertir, se abrirá un diálogo donde tendrás que seleccionar el formato deseado</p>
+	<p>Después de seleccionar, solamente toca esperar el mensaje de de que todo ha salido bien. el archivo se guarda dentro de la carpeta del programa</p>
+	<h2>Posible error y cómo solucionarlo, utilizando el programa add-to-path.</h2>
+	<p>si te encuentras con un error, como que el programa no puede encontrar el archivo solicitado, puedes intentar añadir ffmpeg al path del sistema.</p>
+	<p>Para hacerlo, tienes 2 opciones</p>
+	<ol>
+	<li>añadirlo con el programa add-to-path:</li>
+	<ol>
+	<li>busca el archivo ejecutable, dentro de la carpeta del programa.</li>
+	<li>Ejecútalo, preferentemente con privilegios de administrador</li>
+	<li>Al abrirlo, directamente caerá sobre el botón para seleccionar una carpeta para agregar</li>
+	<li>En el explorador, busca la carpeta llamada ffmpeg, ubicada dentro de la carpeta _internal, dentro de la misma carpeta del programa</li>
+	<li>Selecciona la carpeta ffmpeg, y automáticamente se añadirá al path. después de eso, intenta de nuevo convertir un archivo</li>
+	</ol>
+	<li>También puedes hacerlo de forma manual, siguiendo los pasos detallados a continuación</li>
+<ol>
+<li>Copia la carpeta ffmpeg como ruta de acceso. generalmente eso puede hacerse si presionas tecla aplicaciones, click derecho sobre la carpeta o shift f10.</li>
+<li>Una vez que tengas la ruta en el portapapeles, realiza lo siguiente</li>
+<li>En cualquier parte de tu computadora, presiona la tecla del logotipo de windows + la letra r. esto abrirá el cuadro ejecutar</li>
+<li>Escribe el siguiente comando, y presiona enter. sysdm.cpl. al hacerlo, caerás en una lista con pestañas</li>
+<li>Dentro de esa ventana, navega hasta la pestaña opciones avanzadas, utilizando control + tab para moverse entre las mismas</li>
+<li>Dentro de la pestaña opciones avanzadas, busca con tabulador la opción llamada variables de entorno. una vez que la encuentres, presiona enter para acceder</li>
+<li>Dentro de esa ventana, busca path, desplazándote con flechas hacia abajo</li>
+<li>Cuando ubiques, presiona tabulador hasta el botón editar, o haz el comando ALT + D</li>
+<li>caerás en un cuadro para editar. ahí tendrás que pegar la ruta que sacaste anteriormente, de la carpeta ffmpeg. presiona enter y luego ve buscando con tabulador los botones aceptar, hasta cerrar las propiedades del sistema</li>
+</ol>
+<p>Y listo, intenta convertir un audio ahora. con suerte, eso podría funcionar</p>
+<h2>transcripción de audio utilizando whisper:</h2>
+<p>en los siguientes días, intentaré añadir la funcionalidad de transcribir audio utilizando whisper, un modelo de inteligencia artificial de Open AI</p>
+<p>Por ahora, eso es todo</p>
+<p>Descarga del código fuente</p>
+<button onclick="location.href='https://github.com/jace420163/codes-python-with-wx/archive/refs/heads/main.zip';">Haz click aquí para comenzar la descarga</button>
+<p>¡Muchas gracias por leer!</p>
+</body>
+</html>
